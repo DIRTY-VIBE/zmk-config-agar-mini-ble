@@ -34,6 +34,33 @@
             quick-tap-ms = <130>;
             flavor = "tap-preferred";
         };
+
+        htt: htt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HTT";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <130>;
+            flavor = "tap-preferred";
+        };
+
+        td_b: td_bracket {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_BRACKET";
+            #binding-cells = <0>;
+            bindings =
+                <&htt LEFT_BRACKET LEFT_PARENTHESIS>,
+                <&htt LESS_THAN LEFT_BRACE>;
+        };
+
+        td_b2: td_bracket2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_BRACKET2";
+            #binding-cells = <0>;
+            bindings = <&htt RBKT RPAR>, <&htt GT RBRC>;
+        };
     };
 
     keymap {
@@ -61,7 +88,7 @@
             bindings = <
 &kp CAPSLOCK          &kp N1    &kp N2    &kp N3  &kp N4  &kp N5  &kp N6    &kp N7    &kp N8  &kp N9     &kp N0     &kp MINUS  &kp EQUAL
 &hm LEFT_CONTROL TAB  &trans    &trans    &trans  &trans  &trans  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &kp BSLH   &kp GRAVE
-&kp LSHFT             &trans    &trans    &trans  &trans  &trans  &trans    &trans    &trans  &trans     &kp RSHFT  &trans
+&kp LSHFT             &trans    &trans    &trans  &trans  &trans  &trans    &trans    &td_b   &td_b2     &kp RSHFT  &trans
                       &kp LALT  &kp LGUI          &trans          &trans                      &kp RGUI   &kp RALT
             >;
         };
