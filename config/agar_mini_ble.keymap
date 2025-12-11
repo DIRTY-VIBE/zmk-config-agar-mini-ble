@@ -63,6 +63,16 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        Alfred {
+            bindings = <&kp F14>;
+            key-positions = <14 17>;
+            layers = <0>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
